@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>project details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.2/flatly/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        body {
+            background-color: #fafafa;
+        }
+
+        .container {
+            margin: 50px auto;
+            max-width: 768px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <form id="myForm" method='POST' action="/add_projects_req">
+            <div class="form-group">
+                <label for="name">Project Name: *</label><br />
+                <input type="text" name="name" onblur="checkname();" id="name" class="form-control" placeholder="Name"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="desc">Description: *</label><br />
+                <input type="text" name="desc" id="desc" class="form-control" placeholder="Desc" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email: *</label><br />
+                <input type="email" name="email" onblur="checkmail();" id="email" class="form-control"
+                    placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone: *</label><br />
+                <input type="phone" name="phone" onblur="checknum();" id="phone" class="form-control"
+                    placeholder="Phone" required>
+            </div>
+            <div class="form-group">
+                <label for="amount">Amount: *</label><br />
+                <input type="text" name="amount" id="amount" class="form-control" placeholder="Amount" required>
+            </div>
+            <div class="form-group">
+                <label for="text"> Adhaar* [xxxx xxxx xxxx]</label><br />
+                <input type="text" name="adhaar" onblur="checkadhaar()" id="adhaar" class="form-control"
+                    placeholder="Adhaar" required>
+            </div>
+            <div class="form-group">
+                <label for="text">Project holder: *</label><br />
+                <input type="text" name="projholder" onblur="checkholder()" id="projholder" class="form-control"
+                    placeholder="Adhaar" required>
+            </div>
+            <div class="form-group">
+                <label for="text">Metamask ID: *</label><br />
+                <input type="text" name="bid" id="bid" class="form-control" placeholder="Bid" required>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" name="submit" value="submit" class="btn btn-danger" />
+            </div>
+        </form>
+        <script>
+            function checknum() {
+                e = document.getElementById("phone");
+                f = e.value;
+                if (f.search(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/) !== -1) {
+                }
+                else {
+                    alert("enter correct mobile number");
+                    e.value = '';
+                }
+            }
+            function checkholder() {
+                e = document.getElementById("projholder");
+                f = e.value;
+                if (f.search(/^[A-Za-z]+([\ A-Za-z]+)*/) !== -1 && f.length > 3) {
+                }
+                else {
+                    alert("enter project holder name");
+                    e.value = '';
+                }
+            }
+            function checkmail() {
+                k = document.getElementById("email");
+                n = k.value;
+                if (n.length < 5)
+                    alert('enter email');
+                if (n.search(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g) !== -1) {
+                }
+                else {
+                    alert("enter correct email");
+                    k.value = '';
+                }
+
+            }
+            function checkadhaar() {
+                l = document.getElementById("adhaar");
+                m = l.value;
+                if (m.search(/^[2-9]{1}[0-9]{3}\s{1}[0-9]{4}\s{1}[0-9]{4}$/) !== -1) {
+
+                }
+                else {
+                    alert("enter correct Aadhar Number");
+                    l.value = '';
+                }
+
+            }
+
+            function checkname() {
+                l = document.getElementById("name");
+                m = l.value;
+                if (m.search(/^[A-Za-z]+([\ A-Za-z]+)*/) !== -1 && m.length > 3) {
+                }
+                else {
+                    alert("enter correct name");
+                    l.value = '';
+                }
+
+            }
+
+        </script>
+</body>
+
+</html>
