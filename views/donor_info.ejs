@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    <title>HUMANE | donor Information</title>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <center>
+            <h1 style="color:rgb(148, 58, 58);" class="text  text-center ">
+                donor INFORMATION
+            </h1>
+
+            <table cellspacing="20px" padding="50px"
+                style="color: white; background-color: rgb(3, 35, 48); opacity: 0.6; ">
+                <tr>
+                    <th>_id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile.NO</th>
+                    <th>Adhaar</th>
+                </tr>
+                <tr>
+                    <th class="_id">
+                        <%= info._id %>
+                    </th>
+                    <th class="Name">
+                        <%= info.Name %>
+                    </th>
+                    <th class="Email">
+                        <%= info.Email %>
+                    </th>
+                    <th class="MobileNO">
+                        <%= info.MobileNo %>
+                    </th>
+                    <th class="Adhaar">
+                        <%= info.Adhaar %>
+                    </th>
+                </tr>
+
+            </table>
+</body>
+
+</html>

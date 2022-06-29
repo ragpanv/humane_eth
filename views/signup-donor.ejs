@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    <title>singup page</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="menu-icon">
+                <i class="fa fa-bars fa-2x"></i>
+            </div>
+            <h2 class="logo">HUMANE</h2>
+            <div class="menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projects_to_see">Charity Projects</a></li>
+                    <li><a href="ben-display">Beneficiaries</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    </header>
+    <div class="login-wrap">
+        <div class="login-html">
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign
+                In</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
+            <div class="login-form">
+                <form class="sign-in-htm" action="/donor" method="POST">
+                    <div class="group">
+                        <label for="name" class="label">Full Name </label>
+                        <input id="name" name="name" type="text" onchange="checkname();" class="input" required>
+                    </div>
+                    <div class="group">
+                        <label for="email" class="label">Email</label>
+                        <input id="email" name="email" type="email" onchange="checkmail();" class="input" required>
+                    </div>
+                    <div class="group">
+                        <label for="phone" class="label">Mobile</label>
+                        <input id="phone" name="phone" type="phone" onchange="checknum();" class="input" required>
+                    </div>
+                    <div class="group">
+                        <label for="adhaar" class="label">Adhaar [xxxx xxxx xxxx]</label>
+                        <input id="adhaar" name="adhaar" type="text" onchange="checkadhaar();" class="input" required>
+                    </div>
+                    <div class="group">
+                        <label for="password" class="label">Password</label>
+                        <input id="password" name="pass" type="password" class="input" required>
+                    </div>
+                    <div class="group">
+                        <label for="cpassword" class="label">Confirm Password</label>
+                        <input id="cpassword" name="cpassword" type="password" onchange="checkpass()" class="input"
+                            required>
+                    </div>
+                    <div class="group">
+                        <button type="submit" class="button" onclick="login(event)" value="Sign In"> Sign In </button>
+                    </div>
+                    <a class="btn nav-link" href="index.html">Back to Home</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        function checknum() {
+            e = document.getElementById("phone");
+            f = e.value;
+            if (f.search(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/) !== -1) {
+            }
+            else {
+                alert("enter correct mobile number");
+                e.value = '';
+            }
+        }
+        function checkmail() {
+            k = document.getElementById("email");
+            n = k.value;
+            if (n.length < 5)
+                alert('enter email');
+            if (n.search(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g) !== -1) {
+            }
+            else {
+                alert("enter correct email");
+                k.value = '';
+            }
+
+        }
+        function checkadhaar() {
+            l = document.getElementById("adhaar");
+            m = l.value;
+            if (m.search(/^[2-9]{1}[0-9]{3}\s{1}[0-9]{4}\s{1}[0-9]{4}$/) !== -1) {
+
+            }
+            else {
+                alert("enter correct Aadhar Number");
+                l.value = '';
+            }
+
+        }
+
+        function checkname() {
+            l = document.getElementById("name");
+            m = l.value;
+            if (m.search(/^[A-Za-z]+([\ A-Za-z]+)*/) !== -1 && m.length > 3) {
+            }
+            else {
+                alert("enter correct name");
+                l.value = '';
+            }
+
+        }
+        function checkpass() {
+            l = document.getElementById("password");
+            m = l.value;
+            n = document.getElementById('cpassword').value;
+            if (m != n) {
+                alert('Enter valid password');
+                l.value = '';
+                n = '';
+                document.getElementById('cpassword').value = '';
+                return false;
+            }
+            if (m.search(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/) !== -1) {
+                return true;
+            }
+            else {
+                l.value = '';
+                document.getElementById('cpassword').value = '';
+                alert('enter alpha numeric password having capital letter, numbers and special character');
+            }
+            return false;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta http-equiv="refresh" content="10; url=admin/index.html"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/templatemo-style.css">
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+
+    <title>HUMANE | Login</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="menu-icon">
+                <i class="fa fa-bars fa-2x"></i>
+            </div>
+            <h2 class="logo">HUMANE</h2>
+            <div class="menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projects-to-see">Charity Projects</a></li>
+                    <li><a href="ben-display">Beneficiaries</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="login-wrap" style="min-height:570px;">
+        <div class="login-html">
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Admin Log
+                In</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
+            <div class="login-form">
+                <form class="sign-in-htm" method="GET" action="admin/admin.html" onsubmit=" return login()">
+                    <div class="group">
+                        <label class="label">Username</label>
+                        <input id="user" name="username" type="text" class="input" required>
+                    </div>
+                    <div class="group">
+                        <label class="label">Password</label>
+                        <input id="pass" name="password" type="password" class="input" data-type="password" required>
+                    </div>
+                    <div class="group">
+                        <input id="check" type="checkbox" class="check" checked>
+                        <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                    </div>
+                    <div class="group">
+                        <input type="submit" class="button big" value="Log In"> </input>
+                    </div>
+
+                    <a class="btn nav-link" href="index">Back to Home</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        function login() {
+            var username = document.getElementById('user').value;
+            var password = document.getElementById('pass').value;
+
+          
+            alert('enter correct credentials');
+            return false;
+        }
+    </script>
+</body>
+
+</html>

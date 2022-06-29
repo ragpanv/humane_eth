@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <title>Donor Panel</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+    <link rel="stylesheet" href="admin/admin.css">
+</head>
+
+<body>
+
+    <input type="checkbox" id="sidebar-toggle">
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3 class="brand">
+                <span class="ti-unlink"></span>
+                <span>HUMANE</span>
+            </h3>
+            <label for="sidebar-toggle" class="ti-menu-alt"></label>
+        </div>
+
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="../index.html">
+                        <span class="ti-home"></span>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="projects-to-donate">
+                        <span class="ti-agenda"></span>
+                        <span>Projects</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ben-display">
+                        <span class="ti-folder"></span>
+                        <span>Beneficiaries</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="transaction">
+                        <span class="ti-time"></span>
+                        <span>Transaction History</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="home-donor">
+                        <span class="ti-settings"></span>
+                        <span>Account</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-content">
+
+        <header>
+            <div class="search-wrapper">
+                <span class="logo"></span>
+                <input placeholder="HUMANE" style="font-size: 30px; ">
+            </div>
+
+            <div class="social-icons">
+                <span class="ti-bell"></span>
+                <span class="ti-comment"></span>
+                <div></div>
+            </div>
+        </header>
+
+        <main>
+
+            <h2 class="dash-title">Overview</h2>
+            <div class="card-single" style="float:right">
+                <h4 id="name" name="name"></h4>
+            </div>
+
+            <div class="dash-cards">
+                <div class="card-single">
+                    <div class="card-body">
+                        <span class="ti-briefcase"></span>
+                        <div>
+                            <h5>Projects</h5>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="../projects-to-donate">View all</a>
+                    </div>
+                </div>
+
+                <div class="card-single">
+                    <div class="card-body">
+                        <span class="ti-check-box"></span>
+                        <div>
+                            <h5>Benificiaries</h5>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="ben-display">View all</a>
+                    </div>
+                </div>
+            </div>
+
+            <section class="recent">
+                <div class="activity-grid">
+                    <div class="activity-card">
+                        <h3>Recent activity</h3>
+
+                        <div class="table-responsive">
+                            <table style="margin: 20px; font-size: 5px;">
+
+                                <tr>
+                                    <th>Transaction Hash</th>
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Timestamp</th>
+                                </tr>
+                                <% var i=1; %>
+                                    <% if (trans.length> 0) { %>
+                                        <% trans.forEach(trans=> { %>
+                                            <tr>
+                                                <th class="Tid">
+                                                    <%= trans.Tid %>
+                                                </th>
+                                                <th class="From">
+                                                    <%= trans.From %>
+                                                </th>
+                                                <th class="To">
+                                                    <%= trans.To %>
+                                                </th>
+                                                <th class="Timestamp">
+                                                    <%= trans.Timestamp.toLocaleString() %>
+                                                </th>
+                                            </tr>
+                                            <% i++ %>
+                                                <% }) %>
+                                                    <% } else { %>
+                                                        <p>There are no donors to display...</p>
+                                                        <% } %>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div style="padding: 10px;">
+                </div>
+    </div>
+
+    </div>
+    </section>
+    </main>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Donation details</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: "Raleway", sans-serif
+        }
+    </style>
+</head>
+
+<body class="w3-light-grey">
+
+    <div class="w3-content" style="max-width:1400px">
+            <h1><b>Project Details</b></h1>
+        <div class="w3-row">
+
+            <div class="w3-col 24 s16">
+                <div class="w3-card-4 w3-margin w3-white">
+                    <div class="w3-container">
+                        <h3><b> Name: <%= proj.Name %></b></h3>
+                        <h3>Requested Amount: <%= proj.Amount %>
+                        </h3>
+
+                        <h4> Requested by: <span class="w3-opacity">
+                                <%= proj.ProjectHolder %>
+                            </span></h4>
+                        <h4> Required Amount Rs: <%= proj.RequiredAmount %>
+                        </h4>
+                    </div>
+
+                    <div class="w3-container">
+                        <p>Project Description: <%= proj.Desc %>
+                        </p><button id="bid" style="visibility: hidden;" value=<%=proj.Bid %>></button>
+                        <button id="id" style="visibility: hidden;" value=<%=proj._id %>></button>
+
+                        <div>
+                            <h4>ProjectHolder Details</h4>
+                            <h5>Email: <%= proj.Email %>
+                            </h5>
+                            <h5>Mobile No: <%= proj.MobileNo %>
+                            </h5>
+                            <h5>Adhaar: <%= proj.Adhaar %>
+                            </h5>
+                        </div>
+                        <div class="w3-row" style="padding:20px ;">
+                            <div class="w3-col m8 s12">
+                                <button onclick="connectWallet()"
+                                    class="w3-button w3-padding-large w3-white w3-border"><b>Connect to
+                                        wallet</b></button>
+                                <span id="connect"></span>
+                            </div>
+                        </div>
+                        <div class="w3-row" style="padding:20px ;">
+                            <div class="w3-col m8 s12">
+                                <button onclick="showBalance()"
+                                    class="w3-button w3-padding-large w3-white w3-border"><b>Check your
+                                        Balance</b></button>
+                                <span id="bal"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3-row">
+                    <div class="w3-col m4 w3-hide-small" style="padding: 20px;">
+                        <input type="text" placeholder="Enter money to donate in RS" id="money" />
+                        <input type="submit" onclick="sendTransaction()" class="w3-padding-large w3-right"
+                            value="Make transaction">
+                    </div>
+                </div>
+               <hr>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function connectWallet() {
+            accounts = await window.ethereum.request({ method: "eth_requestAccounts" }).catch((err) => {
+                console.log(err.code);
+            })
+            console.log(accounts[0]);
+            document.getElementById('connect').innerHTML = 'Connected';
+            return false;
+        }
+
+        async function showBalance() {
+
+            let balance = await window.ethereum.request({
+                method: "eth_getBalance",
+                params: [
+                    accounts[0],
+                    'latest'
+                ]
+            }).catch((err) => {
+                console.log(err.code);
+            })
+            const bal = parseInt(balance) / Math.pow(10, 18);
+            document.getElementById('bal').innerHTML = bal;
+            return false;
+        }
+        function sendTransaction() {
+            let m = document.getElementById('money').value;
+            let b = document.getElementById("bid").value;
+            let id = document.getElementById("id").value;
+            console.log(b);
+            let eth = parseFloat(0.0000105032);
+            c = m * eth
+            console.log("c ", c)
+            const v = (c * 1000000000000000000).toString(16);
+            let params = [{
+                "from": accounts[0],
+                "to": b,
+                "gas": Number(21000).toString(16),
+                "gasPrice": Number(2500000).toString(16),
+                "value": v,
+            }]
+            let result = window.ethereum.request({ method: "eth_sendTransaction", params })
+                .then((result) => {
+                    console.log(result);
+                    const trans = result;
+
+                    console.log('calling');
+                    location.replace('update_amount?tid=' + result + '&from=' + accounts[0] + '&to=' + b + '&id=' + id + '&m=' + m);
+                    return result;
+                })
+                .catch((err) => {
+                    console.log(err.code);
+                    alert('you have rejected the transaction');
+                    return false;
+                })
+        }
+
+    </script>
+</body>
+
+</html>

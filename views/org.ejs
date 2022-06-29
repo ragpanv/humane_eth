@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.2/flatly/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    <link stylesheet type="text/css" href="login.css">
+    <style>
+        body {
+            margin: 0;
+            color: #6a6f8c;
+            background-image: url("k.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            font: 600 16px/18px 'Open Sans', sans-serif;
+        }
+
+        .jk {
+            width: 100%;
+            margin: auto;
+            max-width: 800px;
+            min-height: 670px;
+            position: relative;
+            color: white;
+            box-shadow: 10 12px 15px 0 rgba(88, 41, 41, 0.24), 0 17px 50px 0 rgba(0, 0, 0, .19);
+        }
+
+        .btn btn-danger {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div style="margin: 80px;">
+
+        </div>
+        <form id="myForm" method='POST' action="/org">
+            <div class="form-group">
+                <label for="name">Organization Name: *</label><br />
+                <input type="text" name="name" onblur="checkname();" id="name" class="form-control" placeholder="Name"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="email">Organization Email: *</label><br />
+                <input type="email" name="email" onblur="checkmail();" id="email" class="form-control"
+                    placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Organization Phone: *</label><br />
+                <input type="phone" name="phone" onblur="checknum();" id="phone" class="form-control"
+                    placeholder="Phone" required>
+            </div>
+            <div class="form-group">
+                <label for="text">Organization ID: *</label><br />
+                <input type="text" name="id" id="id" onblur="checkid();" class="form-control" placeholder="Id" required>
+            </div>
+            <div class="form-group">
+                <label for="text">BT ID: *</label><br />
+                <input type="text" name="bid" id="bid" class="form-control" placeholder="Bid" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" name="submit" value="submit" class="btn btn-danger" />
+            </div>
+        </form>
+        <script>
+            function checknum() {
+                e = document.getElementById("phone");
+                f = e.value;
+                if (f.search(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/) !== -1) {
+                }
+                else {
+                    alert("enter correct mobile number");
+                    e.value = '';
+                }
+            }
+            function checkmail() {
+                k = document.getElementById("email");
+                n = k.value;
+                if (n.length < 5)
+                    alert('enter email');
+                if (n.search(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g) !== -1) {
+                }
+                else {
+                    alert("enter correct email");
+                    k.value = '';
+                }
+
+            }
+            function checkid() {
+                l = document.getElementById("id");
+                m = l.value;
+                if (m.search(/^[0-9]{4}$/) !== -1) {
+
+                }
+                else {
+                    alert("enter correct ID");
+                    l.value = '';
+                }
+
+            }
+
+            function checkname() {
+                l = document.getElementById("name");
+                m = l.value;
+                if (m.search(/^[A-Za-z]+([\ A-Za-z]+)*/) !== -1 && m.length > 3) {
+                }
+                else {
+                    alert("enter correct name");
+                    l.value = '';
+                }
+
+            }
+
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/projects_to_donate.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
+    <title>HUMANE | Projects</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="menu-icon">
+                <i class="fa fa-bars fa-2x"></i>
+            </div>
+            <h2 class="logo">HUMANE</h2>
+            <div class="menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projects-to-see">Charity Projects</a></li>
+                    <li><a href="ben-display">Beneficiaries</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 style="color:white;" class="text  text-center ">
+            PROJECTS INFORMATION
+        </h1>
+
+        <form id="myForm" method='GET' action="/donate_details">
+            <table cellspacing="20px" padding="50px"
+                style="color: white; background-color: rgb(3, 35, 48); opacity: 0.6; ">
+                <tr>
+                    <th>S.No</th>
+                    <th>Name</th>
+                    <th>Desc</th>
+                    <th>Email</th>
+                    <th>MobileNo</th>
+                    <th>Total Amount</th>
+                    <th>Required Amount</th>
+                    <th>Adhaar</th>
+                    <th>ProjectHolder</th>
+                </tr>
+                <% var i=1; %>
+                    <% if (projs.length> 0) { %>
+                        <% projs.forEach(projs=> { %>
+                            <tr>
+                                <th class="S.No">
+                                    <%= i %>
+                                </th>
+                                <th class="Name">
+                                    <%= projs.Name %>
+                                </th>
+                                <th class="Desc">
+                                    <%= projs.Desc %>
+                                </th>
+                                <th class="Email">
+                                    <%= projs.Email %>
+                                </th>
+                                <th class="MobileNo">
+                                    <%= projs.MobileNo %>
+                                </th>
+                                <th class="Amount">
+                                    <%= projs.Amount %>
+                                </th>
+                                <th class="Required Amount">
+                                    <%= projs.RequiredAmount %>
+                                </th>
+                                <th class="Adhaar">
+                                    <%= projs.Adhaar %>
+                                </th>
+                                <th class="ProjectHolder">
+                                    <%= projs.ProjectHolder %>
+                                </th>
+                            </tr>
+                            <% i++ %>
+                                <% }) %>
+                                    <% } else { %>
+                                        <p>There are no donors to display...</p>
+                                        <% } %>
+            </table>
+        </form>
+        </center>
+    </div>
+</body>
+
+</html>

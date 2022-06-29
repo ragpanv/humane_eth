@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/projects_to_donate.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
+    <title>HUMANE | ben Information</title>
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="menu-icon">
+                <i class="fa fa-bars fa-2x"></i>
+            </div>
+            <h2 class="logo">HUMANE</h2>
+            <div class="menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projects-to-see">Charity Projects</a></li>
+                    <li><a href="ben-display">Beneficiaries</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <center>
+            <h1 style="color:white;" class="text  text-center ">
+                BENEFICIARIES INFORMATION
+            </h1>
+
+            <table cellspacing="20px" padding="50px"
+                style="color: white; background-color: rgb(3, 35, 48); opacity: 0.6; ">
+                <!-- HEADING FORMATION -->
+                <tr>
+                    <th>S.No</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile.NO</th>
+                    <th>Adhaar</th>
+                </tr>
+                <% var i=1; %>
+                    <% if (bens.length> 0) { %>
+                        <% bens.forEach(bens=> { %>
+                            <tr>
+                                <th class="S.No">
+                                    <%= i %>
+                                </th>
+                                <th class="Name">
+                                    <%= bens.Name %>
+                                </th>
+                                <th class="Email">
+                                    <%= bens.Email %>
+                                </th>
+                                <th class="MobileNO">
+                                    <%= bens.MobileNo %>
+                                </th>
+                                <th class="Adhaar">
+                                    <%= bens.Adhaar %>
+                                </th>
+                            </tr>
+                            <% i++ %>
+                                <% }) %>
+                                    <% } else { %>
+                                        <p>There are no donors to display...</p>
+                                        <% } %>
+            </table>
+            <div style="margin: 50px;"></div>
+        </center>
+    </div>
+
+</body>
+
+</html>

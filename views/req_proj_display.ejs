@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../public/css/navbar.css">
+  <link rel="stylesheet" href="css/projects_to_donate.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
+  <title>HUMANE | Projects</title>
+  <style>
+    body {
+      background-color: #333333;
+      color: #FFFFFF;
+      min-height: 100vh;
+      font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+      justify-content: center;
+      align-items: center;
+      background-image: url(bg.png);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    table,
+    td,
+    th {
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th,
+    td {
+      padding: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="menu-icon">
+        <i class="fa fa-bars fa-2x"></i>
+      </div>
+      <h2 class="logo">HUMANE</h2>
+      <div style="margin: 60px;">
+
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1 style="color:white;" class="text  text-center ">
+      REQUESTED PROJECTS INFORMATION
+    </h1>
+
+    <form id="myForm" method='GET' action="/admin/req_proj_display">
+      <table cellspacing="20px" padding="50px" style=" opacity: 0.6; ">
+        <tr>
+          <th>S.No</th>
+          <th>Name</th>
+          <th>Desc</th>
+          <th>Email</th>
+          <th>MobileNo</th>
+          <th>Amount</th>
+          <th>Adhaar</th>
+          <th>ProjectHolder</th>
+          <th></th>
+        </tr>
+        <% var i=1; %>
+          <% if (requ.length> 0) { %>
+            <% requ.forEach(requ=> { %>
+              <tr>
+                <th class="S.No">
+                  <%= i %>
+                </th>
+                <th class="Name">
+                  <%= requ.Name %>
+                </th>
+                <th class="Desc">
+                  <%= requ.Desc %>
+                </th>
+                <th class="Email">
+                  <%= requ.Email %>
+                </th>
+                <th class="MobileNo">
+                  <%= requ.MobileNo %>
+                </th>
+                <th class="Amount">
+                  <%= requ.Amount %>
+                </th>
+                <th class="Adhaar">
+                  <%= requ.Adhaar %>
+                </th>
+                <th class="ProjectHolder">
+                  <%= requ.ProjectHolder %>
+                </th>
+                <th><button onclick="add(this.name)" name=<%=requ._id %> >Add</button></th>
+              </tr>
+              <% i++ %>
+                <% }) %>
+                  <% } else { %>
+                    <p>There are no donors to display...</p>
+                    <% } %>
+      </table>
+      <div style="margin: 50px;"></div>
+    </form>
+    </center>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/projects_to_donate.css">
+    <title>HUMANE | Charity Projects</title>
+    <style>
+
+
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="menu-icon">
+                <i class="fa fa-bars fa-2x"></i>
+            </div>
+            <h2 class="logo">HUMANE</h2>
+            <div class="menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projects-to-donate">Charity Projects</a></li>
+                    <li><a href="ben-display">Beneficiaries</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <center>
+            <h1 style="color:aqua; text-align: center; font-size: 2rem;">TRANSACTION HISTORY</h1>
+
+            <table cellspacing="20px" padding="50px"
+                style="color: white; margin: 20px; font-size: 12px; background-color: rgb(3, 35, 48); opacity: 0.6; ">
+                <tr>
+                    <th>S.No</th>
+                    <th>Transaction Hash</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Timestamp</th>
+                </tr>
+                <% var i=1; %>
+                    <% if (trans.length> 0) { %>
+                        <% trans.forEach(trans=> { %>
+                            <tr>
+                                <th class="S.No">
+                                    <%= i %>
+                                </th>
+                                <th class="Tid">
+                                    <%= trans.Tid %>
+                                </th>
+                                <th class="From">
+                                    <%= trans.From %>
+                                </th>
+                                <th class="To">
+                                    <%= trans.To %>
+                                </th>
+                                <th class="Timestamp">
+                                    <%= trans.Timestamp.toLocaleString() %>
+                                </th>
+                            </tr>
+                            <% i++ %>
+                                <% }) %>
+                                    <% } else { %>
+                                        <p>There are no donors to display...</p>
+                                        <% } %>
+            </table>
+            <div style="margin: 50px;"></div>
+        </center>
+    </div>
+
+
+
+</body>
+
+</html>
