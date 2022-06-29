@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Heebo:400,700|Open+Sans:400,700');
+
+body {
+  background-color: #333333;
+  color: #FFFFFF;
+  min-height: 100vh;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  justify-content: center;
+  align-items: center;
+  background-image: url(bg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+table, td, th {  
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 15px;
+}
